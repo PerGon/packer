@@ -5,6 +5,7 @@ import (
 	"os"
 	"strings"
 	"sync"
+	"time"
 
 	"github.com/mitchellh/iochan"
 )
@@ -132,6 +133,7 @@ func (r *RemoteCmd) StartWithUi(c Communicator, ui Ui) error {
 		defer stdout_w.Close()
 		defer stderr_w.Close()
 		r.Wait()
+		time.Sleep(1 * time.Second)
 	}()
 
 	// Loop and get all our output
